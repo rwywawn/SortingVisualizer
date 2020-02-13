@@ -38,6 +38,6 @@ function swap(ind1, ind2, array, animations) {
   let temp = array[ind1];
   array[ind1] = array[ind2];
   array[ind2] = temp;
-  return array;
+  return animations;
 }
 
