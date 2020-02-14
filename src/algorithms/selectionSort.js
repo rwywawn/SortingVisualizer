@@ -31,5 +31,4 @@ function swap(ind1, ind2, array, animations) {
   array[ind2] = temp;
   return animations;
 }
-// let test = [123, 3443, 786, 98, 64, 67,8709,657,47,20,90];
-// selectionSortStart(test);
+

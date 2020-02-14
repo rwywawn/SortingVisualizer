@@ -6,6 +6,7 @@ import quickSortStart from "./algorithms/quickSort.js";
 import bubbleSortStart from "./algorithms/bubbleSort.js";
 import insertionSortStart from "./algorithms/insertionSort.js";
 import selectionSortStart from "./algorithms/selectionSort.js";
+import heapSortStart from "./algorithms/heapSort.js";
 //Adjustable Variables
 const MAX_LENGTH = 800;
 const MIN_LENGTH = 5;
@@ -100,15 +101,20 @@ export default class List extends React.Component {
     let animations = selectionSortStart(this.state.array);
     this.animater(animations);
   }
-  heapSort() {}
+  heapSort() {
+    let animations = heapSortStart(this.state.array);
+    this.animater(animations);
+  }
 
   animater(animations) {
     let bars = document.getElementsByClassName("bar");
     for (let i = 0; i < animations.length; i++) {
       let [bar1, bar2, newHeight1, newHeight2] = animations[i];
       let colorChange = newHeight1 === null;
+  
       if (colorChange) {
         setTimeout(() => {
+        
           let newColor =
             bars[bar1].style.backgroundColor === COLOR2 ? COLOR1 : COLOR2;
           bars[bar1].style.backgroundColor = newColor;
