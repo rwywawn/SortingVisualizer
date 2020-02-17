@@ -1,4 +1,4 @@
-//imports  //TODO: Maybe add radix sort (LSD) and (MSD), add Other Quick Sort Hoare partition scheme
+//imports  //TODO: Maybe add radix sort (LSD) and (MSD), add Other Quick Sort: Hoare partition scheme
 import React from "react";
 import "./List.css";
 import mergeSortStart from "./algorithms/mergeSort.js";
@@ -61,22 +61,19 @@ export default class List extends React.Component {
     setTimeout(() => {
       bars[rand1].style.backgroundColor = COLOR2;
       bars[rand2].style.backgroundColor = COLOR2;
-    }, TIMER * i);
+    }, TIMER * i * Math.log(i));
 
     setTimeout(() => {
-      let len1 = this.state.array[rand1];
-      let len2 = this.state.array[rand2];
+      let len1 = bars[rand1].style.height;
+      let len2 = bars[rand2].style.height;
       bars[rand1].style.backgroundColor = COLOR1;
       bars[rand2].style.backgroundColor = COLOR1;
-      this.setState(prev => {
-        prev.array[rand2] = len1;
-        prev.array[rand1] = len2;
-        return prev.array;
-      });
-    }, TIMER * (i + 1));
+      bars[rand2].style.height = len1;
+      bars[rand1].style.height = len2;
+    }, TIMER * (i + 1) * Math.log(i + 1));
   }
   swapRandomArray() {
-    for (let i = 0; i < LENGTH; i++) {
+    for (let i = 0; i < LENGTH * Math.log(LENGTH); i++) {
       this.swapRandom(i);
     }
   }
@@ -93,10 +90,10 @@ export default class List extends React.Component {
     let animations = bubbleSortStart(this.state.array);
     this.animater(animations);
   }
-  quickSort() {
+  quickSort() { // lomuto partition quick sort
     let animations = quickSortStart(this.state.array);
     this.animater(animations);
-  } // lomuto partition quick sort
+  } 
   selectionSort() {
     let animations = selectionSortStart(this.state.array);
     this.animater(animations);
@@ -111,10 +108,9 @@ export default class List extends React.Component {
     for (let i = 0; i < animations.length; i++) {
       let [bar1, bar2, newHeight1, newHeight2] = animations[i];
       let colorChange = newHeight1 === null;
-  
+
       if (colorChange) {
         setTimeout(() => {
-        
           let newColor =
             bars[bar1].style.backgroundColor === COLOR2 ? COLOR1 : COLOR2;
           bars[bar1].style.backgroundColor = newColor;
@@ -148,12 +144,11 @@ export default class List extends React.Component {
       } else {
         setTimeout(() => {
           for (let j = 0; j < mini.length; j++) {
-            let [bar,newHeight]=mini[j];
+            let [bar, newHeight] = mini[j];
             let newColor =
               bars[bar].style.backgroundColor === COLOR2 ? COLOR1 : COLOR2;
             bars[bar].style.backgroundColor = newColor;
             bars[bar].style.height = `${newHeight}px`;
-            
           }
         }, TIMER * i);
       }
