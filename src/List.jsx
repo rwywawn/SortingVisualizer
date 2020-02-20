@@ -7,6 +7,7 @@ import bubbleSortStart from "./algorithms/bubbleSort.js";
 import insertionSortStart from "./algorithms/insertionSort.js";
 import selectionSortStart from "./algorithms/selectionSort.js";
 import heapSortStart from "./algorithms/heapSort.js";
+import countSortStart from "./algorithms/countingSort.js";
 //Adjustable Variables
 const MAX_LENGTH = 800;
 const MIN_LENGTH = 5;
@@ -102,6 +103,11 @@ export default class List extends React.Component {
     let animations = heapSortStart(this.state.array);
     this.animater(animations);
   }
+  countingSort() { 
+    let animations = countSortStart(this.state.array);
+    this.animater(animations);
+  }
+ 
 
   animater(animations) {
     let bars = document.getElementsByClassName("bar");
@@ -184,6 +190,9 @@ export default class List extends React.Component {
             </li>
             <li>
               <button onClick={() => this.heapSort()}> Heap Sort </button>
+            </li>
+            <li>
+              <button onClick={() => this.countingSort()}> Counting Sort </button>
             </li>
             <li>
               <button onClick={() => this.swapRandomArray()}>

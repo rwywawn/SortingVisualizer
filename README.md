@@ -1,6 +1,6 @@
 # SortingVisualizer
 
-A sorting visualizer to better understand how sorting algorithms work. Currently it includes visualizarion for quick sort, bubble sort, insertion sort, selection sort, heap sort and merge sort. 
+A sorting visualizer to better understand how sorting algorithms work. Currently it includes visualizarion for quick sort, bubble sort, insertion sort, selection sort, heap sort, counting sort and merge sort. 
 
 NOTE: The time it takes for each algorithm to finish is not accurate since pauses are added when swapping and changing the value of items.
 
